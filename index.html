@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      color:#879ac1 !important;
+    }
+    body{
+      background-color: #101a36;
+      color: #fff; 
+         
+    }
+    .custom-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  margin-bottom: 10px;
+}
+
+.custom-list li i {
+  margin-right: 5px;
+}
+    .container-fluid {
+      height: 100%;
+      overflow: hidden;
+    }
+    .skills {
+      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .skill {
+    background-color: #132f49;
+    color:#57c2cd;
+    padding: 8px 16px;
+    border-radius: 16px;
+    margin: 4px;
+    font-size: 14px;
+  }.menu{
+      margin-bottom: 100%;
+    }
+
+    .left-column {
+      height: 100%;
+      background-color: #101a36;
+      /* background: #f5f5f5; */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .left-column h1, .left-column h3 {
+      margin-top: 0;
+    }
+
+    .menu {
+      list-style-type: none;
+      padding-left: 40px;
+      margin-top: 48px;
+      font-size: medium;
+    }
+
+    .menu li {
+      font-weight: bold;
+    margin-bottom: 10px;
+    position: relative;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .menu li::before {
+    content: "\2192";
+    /* position: absolute; */
+    top: 50%;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #101a36;
+    color: white;
+    font-weight: bold;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .menu li:hover {
+    transform: translateX(10px);
+  }
+
+  .menu li:hover::before {
+    transform: scaleX(1);
+  }
+
+    .right-column {
+      height: 640px;
+      overflow-y: auto;      
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #101a36;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      height: 100%;
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    .section p {
+      margin-bottom: 0;
+    }  .project {
+    position: relative;
+    transition: transform 0.3s;
+    z-index: 1;
+  }
+
+  .exp {
+    padding: 10px;
+    transition: box-shadow 0.3s;
+    z-index: 1;
+  }
+
+  .exp:hover {
+    background: #16213e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .name{
+    padding-left: 40px;
+    padding-top: 40px; 
+    font-weight: bold; 
+    font-size: xxx-large;
+    color: #ebefff;
+  }
+  .position{
+    padding-left: 40px;
+    padding-top: 10px;
+    font-weight: bold;  
+    color: #ebefff;
+  }
+  .desc{
+    padding-left: 40px;
+    padding-top: 10px;  
+  }
+  .t{
+    color: #ebefff
+  }
+  .torch-pointer {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 50px #16213e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background-color: #233057;
+    opacity: 0;
+    transform: scale(0);
+    animation: torchEffect 0.4s linear infinite;
+    
+  }
+  ul.menu li > a {
+    color: #ebefff;
+    text-decoration: none;
+}
+  @keyframes torchEffect {
+    0% {
+      opacity: 0;
+      transform: scale(3);
+    }
+    50% {
+      opacity: 0.1;
+      transform: scale(3);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(3);
+    }
+  }
+
+  .torch-pointer.clicked {
+    animation-play-state: paused;
+    opacity: 0.1;
+  }
+  @keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-webkit-keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-moz-keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-o-keyframes load{
+  from {
+    width: 0%
+  }
+}
+
+.bar{
+  background-color: #EEE;
+  padding: 2px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #FFF;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+.bar::before{
+  content:  attr(data-skill);
+  background-color: #f3b0ff;
+  display: inline-block;
+  padding: 5px 0 5px 10px;
+  border-radius: inherit;
+  animation: load 2s 0s;
+  -webkit-animation: load 2s 0s;
+  -moz-animation: load 2s 0s;
+  -o-animation: load 2s 0s;
+}
+
+.bar.front::before{
+  background-color: #202841;
+}
+.bar.back::before{
+  background-color: #6f8894;
+}
+
+.bar.learning::before{
+  width: calc(20% - 10px);
+}
+.bar.basic::before{
+  width: calc(40% - 10px);
+}
+.bar.intermediate::before{
+  width: calc(60% - 10px);
+}
+.bar.advanced::before{
+  width: calc(80% - 10px);
+}
+.bar.expert::before{
+  width: calc(100% - 10px);
+}
+.view-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+
+  color: #fff;
+  text-decoration: none;
+}
+.social-icons {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons li:last-child {
+  margin-right: 0;
+}
+
+.social-icons li a {
+  display: block;
+  text-decoration: none;
+}
+
+.social-icons li i {
+  font-size: 24px;
+}
+  </style>
+  
+</head>
+<body>
+  <div class="torch-pointer"></div>
+  <div class="container-fluid">
+    <div class="row h-100">
+      <div class="col-md-6 col-2 fixed-top one">
+        <div class="left-column d-flex flex-column">
+          <h1 class="name">Nikesh Sharma</h1>
+          <h3 class="position">Senior Developer</h3>
+          <p class="desc">Skilled senior software developer experienced in leading cross-functional teams, implementing cutting-edge technologies, and optimizing software applications to meet the evolving needs of clients and end-users.</p>
+          <ul class="menu">
+            <li><a href="#about" class="menu-link">About</a></li>
+            <li><a href="#experience" class="menu-link">Experience</a></li>
+            <li><a href="#projects" class="menu-link">Projects</a></li>           
+            <li><a href="#skills" class="menu-link">Skills</a></li>
+             <li><a href="#education" class="menu-link">Education</a></li>
+             <li><a href="#contact" class="menu-link">Contact</a></li>
+          </ul>
+          <ul class="social-icons">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 offset-sm-6 right-column">
+        <div class="">
+          <div id="about" class="section">
+           
+            <p>I am experienced and results-driven Senior Software Developer with a strong background in
+               <span class="t">.NET, Angular, React, Sql, Azure</span>
+               and a wide range of cutting-edge technologies. With a passion for crafting robust and scalable solutions, I bring over <span class="t">8.9+ years</span> of hands-on experience in designing, developing, and delivering high-quality software applications.
+
+            </p><br><p> proficiency extends across the <span class="t">entire software development lifecycle, from requirements gathering and system design to implementation, testing, and maintenance</span>. I possess a deep understanding of <span class="t">.NET frameworks, Angular, React, JavaScript, Azure, SQL, Entity Framework (EF), MVC, microservices, as well as messaging technologies like Kafka and RabbitMQ</span>.
+              
+              </p><p>Throughout my career, I have successfully delivered numerous complex projects, leveraging my strong problem-solving skills and meticulous attention to detail. I thrive in dynamic and fast-paced environments, collaborating effectively with cross-functional teams to drive innovation and achieve business objectives. My ability to quickly grasp new technologies and stay up-to-date with industry trends has enabled me to deliver solutions that are both efficient and scalable.
+              
+              Passionate about building user-centric applications, I strive to create seamless user experiences by applying best practices in UI/UX design. My expertise in cloud technologies, particularly <span class="t">Azure</span>, allows me to leverage the power of the cloud to optimize performance, scalability, and security.
+              
+              With a track record of consistently meeting project deadlines and exceeding client expectations, I am dedicated to delivering exceptional software solutions that drive business growth and enhance customer satisfaction. Let's connect to explore how my skills and expertise can contribute to your organization's success.
+            </p>
+          </div>
+          <div id="experience" class="section">      
+            <div class="row exp">
+              <div class="col-md-2">
+                <p>03/2021 - Present</p>
+              </div>
+              <div class="col-md-4" style="width:80%;">
+                <h4 style="color: #ebefff;">RHA Technology PVT. LTD | New Delhi</h4>
+                <h5>Software Engineer 2</h5>
+                <ul class="custom-list">
+                  <li><i class="fas fa-check"></i>Assist in the design and implementation process for new products/projects, informing senior executives of alternatives.</li>
+                  <li><i class="fas fa-check"></i>Worked on Hotel Checklist System, Organization management and business workflow management web app, Malls Websites and apps using technologies .NET Core, Asp.Net, Angular.</li>
+                  <li><i class="fas fa-check"></i>Design and develop microservices using .net core and ef using Agile methodologies and Test- Driven Development (TDD).</li>
+                  <li><i class="fas fa-check"></i>Involved in module development, business communication, business requirement analysis, and DevOps operations.</li>
+                  <li><i class="fas fa-check"></i>Analyzed and developed additional modules on the existing system.</li>
+                  <li><i class="fas fa-check"></i>Involved in agile project management methodologies through Jira and CICD pipeline.</li>
+                  <li><i class="fas fa-check"></i>Maintained and built positive client relationships.</li>
+                  <li><i class="fas fa-check"></i>Managed team resources to effectively deliver on sprint goals.</li>
+                </ul>
+              </div>
+            </div>
+          
+           
+
+            <div class="row exp">
+              <div class="col-md-2">
+                <p>01/2015 - 03/2021</p>
+              </div>
+              <div class="col-md-4" style="width:80%;">
+                <h4 style="color: #ebefff;">Repugen Web Team PVT.LTD | Patna</h4>
+                <h5>Software Engineer</h5>
+                <ul class="custom-list">
+                  <li><i class="fas fa-check"></i>Developed multiple websites using technologies Asp.Net MVC, Angular, Node, Asp.Net Core and JavaScript.</li>
+              <li><i class="fas fa-check"></i>Optimized websites for search engines and improved site performance.</li>
+              <li><i class="fas fa-check"></i>Coordinating the workflow between the end user, product OWNER, developer, designer, QA.</li>
+              <li><i class="fas fa-check"></i>Involved in R&D and integration of modules (RankChecker tool, GPay, Amazon Pay, Apple Pay, PayPal, Amazon merchant center, Google Shopping).</li>
+              <li><i class="fas fa-check"></i>Independently developed JavaScript based product customization multi-vendor ecommerce web application, multi-vendor organizations management system.</li>
+              <li><i class="fas fa-check"></i>Developed 50+ small websites which includes CMS and landing pages in mvc for business.</li>
+              <li><i class="fas fa-check"></i>Involved in development of video streaming sites.</li>
+              <li><i class="fas fa-check"></i>Involved in team mentoring</li>
+                </ul>
+              </div>
+            </div>
+           
+          </div>
+         
+              <div id="projects" class="section">
+              
+                <div class="row exp">                
+                  <div class="col-md-12">
+                    <a href="#" class="view-link"><i class="fa fa-arrow-up"></i></a>
+                    <h4 style="color: #ebefff;">Work Permit management</h4>
+                    <p>Designed and implemented a robust permit-to-work request workflow application capable of facilitating multiple levels of approvals and confirmations. The application generated comprehensive reports that were shared with investors and internal administrators for review and further actions.
+                    Also Migrated same existing project to react and Led end-to-end execution, starting from inception to completion, and provided ongoing maintenance and support.</p>
+                    <div class="skills">
+                      <div class="skill">Node</div>
+                      <div class="skill">React</div>
+                      <div class="skill">Sql</div>
+                      <div class="skill">DevOps</div>
+                      <div class="skill">Azure</div> 
+                    </div> 
+              
+                  </div>
+                </div>
+           
+                <div class="row exp">
+            
+                  <div class="col-md-12">
+                    <a href="#" class="view-link"><i class="fa fa-arrow-up"></i></a>
+                    <h4 style="color: #ebefff;">TOKEN Report System</h4>
+                    <p>Developed and deployed a highly reliable token generation system that efficiently managed visitor tokens through a mobile app. Additionally, implemented a comprehensive reporting system to track and analyze visitor data.</p>
+                <p>Independently undertook end-to-end responsibilities for the development, coding, database structuring, and hosting on Azure for a project, starting from scratch.</p>
+                <div class="skills">
+                  <div class="skill">Node</div>
+                  <div class="skill">React</div>
+                  <div class="skill">Sql</div>
+                  <div class="skill">DevOps</div>
+                  <div class="skill">Azure</div> 
+                </div>         
+                  </div>
+                </div>
+                <div class="row exp">
+                  <div class="col-md-12">
+                    <h4 style="color: #ebefff;">Checklist System</h4> 
+                    <p>I played a key role in the development and implementation of the Emaar Construction Checklist system, which aimed to enhance the quality of hotels and various construction amenities and services through comprehensive inspections. The system facilitated the seamless updating of inspection details and their submission to the relevant roles for approval.</p>
+                    <p>My involvement in the Construction Checklist system project allowed me to contribute to the improvement of hotel and construction amenities' quality and ensure compliance with established standards.</p>                  
+                    <div class="skills">
+                      <div class="skill">.Net Core</div>
+                      <div class="skill">Angular</div>
+                      <div class="skill">Sql</div>
+                      <div class="skill">DevOps</div>
+                      <div class="skill">Azure</div> 
+                    </div>       
+                  </div>
+                </div>
+                <div class="row exp">
+                  <div class="col-md-12">
+                    <h4 style="color: #ebefff;">ConnectNow</h4>   
+                    <p>Managed a heavily utilized corporate site that facilitated the processing of various modules, catering to employees at all levels, from junior to senior. Examples of modules included employee timesheet management, accessories tracking, business document processing, and numerous other functionalities.</p>
+                    <p>I  efficiently created new modules and worked on business tickets for the development of various modules in a fast-paced live business environment. This involved implementing bug fix tracking through the Jira process and effectively handling the Azure CICD process.</p>
+                    <div class="skills">
+                      <div class="skill"> Asp.Net</div>
+                      <div class="skill">Sql</div>
+                      <div class="skill">Azure</div>
+                      <div class="skill">DevOps</div> 
+                    </div>           
+                  </div>
+                </div>
+                <div class="row exp">
+                  <div class="col-md-12">
+                    <h4 style="color: #ebefff;">SELLMYTEES</h4>  
+                    <p>
+                      Led the end-to-end development of a robust and scalable ecommerce platform that facilitated online transactions between customers and shopkeeper stores.
+    
+    Implemented advanced features, including a designer studio powered by fabric.js, allowing users to design customized products.
+    
+    Collaborated closely with stakeholders to gather requirements, design intuitive user interfaces, and integrate secure payment gateways.
+    
+    Ensured high code quality and performance optimization by conducting thorough code reviews and implementing best practices.
+    
+    Successfully delivered the project within the specified timelines, meeting all business objectives and exceeding customer expectations
+                    </p>
+                    <p>Led end-to-end project execution, starting from inception to completion, and provided ongoing maintenance and support.</p>                    
+                    <div class="skills">
+                      <div class="skill"> Asp.Net</div>
+                      <div class="skill">MVC</div>
+                      <div class="skill">C#</div>
+                      <div class="skill">Fabric JS</div>
+                      <div class="skill">Require JS</div>
+                      <div class="skill">Backbone JS</div> 
+                      <div class="skill">Bootstrap</div>
+                      <div class="skill">CSS</div>
+                      <div class="skill">Node</div>
+                      <div class="skill">Image Magic</div>
+                    </div>   
+                  </div>
+                </div>
+                <div class="row exp">
+                <div class="col-md-12">
+                    <h4 style="color: #ebefff;">OPENVIO</h4>    
+                    <p>Developed and managed a comprehensive Multi-Vendor Organization Management System encompassing diverse functionalities such as ticketing, employee management, leave management, project management, and more.</p>
+                    <p>Independently undertook end-to-end responsibilities for the development, coding, database structuring, and hosting on Azure for a project, starting from scratch.</p>       
+                    <div class="skills">
+                      <div class="skill"> Asp.Net</div>
+                      <div class="skill">MVC</div>
+                      <div class="skill">react</div>
+                      <div class="skill">JavaScript</div>
+                      <div class="skill">Sql</div>
+                      <div class="skill">Bootstrap</div>
+                      <div class="skill">Azure</div>
+                      <div class="skill">DevOps</div> 
+                    </div>        
+                  </div>                  
+                </div>
+                <div class="row exp">
+                  <div class="col-md-12">
+                      <h4 style="color: #ebefff;">Protuff Decals </h4>    
+                      <p>Designed and developed a dynamic e-commerce website featuring a JavaScript-based designer studio for customized helmet and sticker creations, alongside multiple other pages with extensive customization capabilities.</p>
+                      <p>Independently undertook end-to-end responsibilities for the development, coding, database structuring, and hosting on Azure for a project, starting from scratch.</p>       
+                      <div class="skills">
+                        <div class="skill"> Asp.Net</div>
+                        <div class="skill">MVC</div>
+                        <div class="skill">react</div>
+                        <div class="skill">JavaScript</div>
+                        <div class="skill">Sql</div>
+                        <div class="skill">Bootstrap</div>
+                        <div class="skill">Azure</div>
+                        <div class="skill">DevOps</div> 
+                      </div>        
+                    </div>                  
+                  </div>
+           
+              </div>
+              <div id="skills" class="section">
+                <div class="row exp">
+                  <div class="col-md-12 barchart" style="padding: 50px;">
+                   
+                    <div class="bar back expert" data-skill="ASP.NET CORE"></div>
+                    <div class="bar back expert" data-skill="Node"></div>
+                    <div class="bar back intermediate" data-skill="Python"></div>
+                    <div class="bar back expert" data-skill="C#"></div>
+                    <div class="bar front advanced" data-skill="Angular"></div>
+                    <div class="bar front advanced" data-skill="React"></div>
+                    <div class="bar back intermediate" data-skill="microservices"></div>
+                    <div class="bar front intermediate" data-skill="TDD"></div>
+                    <div class="bar front expert" data-skill="JavaScript"></div>
+                    <div class="bar front expert" data-skill="HTML5"></div>
+                
+              
+                  </div>
+                </div>
+              </div>
+              <div id="contact" class="section">
+                <h2>Contact</h2>
+                <p>Email: singhnikesh459@gmail.com</p>
+                <p>Phone: +917484847799</p>
+              </div>
+              <div id="education" class="section">
+              
+                <div class="row exp">
+                <div class="col-md-12">
+                    <h4 style="color: #ebefff;">Bachelor of Science BSC.IT(NIIT) - 2014 </h4>    
+                    <p>Distance education done along with diploma course for 3 years</p>       
+                     <p>Univerity: Kuvempu Univerity, Karnataka, Bangaluru</p>    
+                  </div>                  
+                </div>
+              
+              </div>
+              <div id="additional-content" class="section">
+                <h2>Additional Content</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a justo a nunc ultricies pulvinar. Fusce convallis sapien eget tortor interdum ullamcorper. Nam eget pharetra ligula. Integer et purus neque. Suspendisse sit amet nisi id ex cursus posuere. Donec mollis massa sed ultrices efficitur. Integer non erat vitae justo vulputate dapibus. Ut aliquam mi eget pharetra hendrerit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        // Get all menu links
+        const menuLinks = document.querySelectorAll('.menu-link');
+        debugger;
+        // Get all sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+              section.style.display = 'none';
+            });
+        // Show the default section (About)
+     
+        document.getElementById('about').style.display = 'block';
+       
+        // Add click event listener to each menu link
+        menuLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();             
+            sections.forEach(section => {
+              section.style.display = 'none';
+            });
+            // Get the target section
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            // Show the target section
+            targetSection.style.display = 'block';
+          });
+        });
+        document.addEventListener('mousemove', function (e) {
+  var torchPointer = document.querySelector('.torch-pointer');
+  torchPointer.style.top = e.pageY + 'px';
+  torchPointer.style.left = e.pageX + 'px';
+});
+
+document.addEventListener('click', function (e) {
+  var torchPointer = document.querySelector('.torch-pointer');
+  torchPointer.classList.add('clicked');
+});
+
+      </script>
+    </body>
+
+    </html>
