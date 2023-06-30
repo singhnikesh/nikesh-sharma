@@ -54,9 +54,8 @@
     border-radius: 16px;
     margin: 4px;
     font-size: 14px;
-  }.menu{
-      margin-bottom: 100%;
-    }
+  }
+
 
     .left-column {
       height: 100%;
@@ -279,8 +278,9 @@
   text-decoration: none;
 }
 .social-icons {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none;  
+  padding: 21px;
+    padding-left: 45px;
   margin: 0;
 }
 
@@ -301,6 +301,25 @@
 .social-icons li i {
   font-size: 24px;
 }
+.desc{display: block;}
+.position{display: block;}
+.social-icons{display: block;}
+@media (max-width: 767px) {
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .name{
+    font-size: 30px;
+  }
+.desc{display: none;}
+.position{display: none;}
+.social-icons{display: none;}
+  .menu li {
+    width: 50%;
+  }
+}
   </style>
   
 </head>
@@ -314,24 +333,25 @@
           <h3 class="position">Senior Developer</h3>
           <p class="desc">Skilled senior software developer experienced in leading cross-functional teams, implementing cutting-edge technologies, and optimizing software applications to meet the evolving needs of clients and end-users.</p>
           <ul class="menu">
-            <li><a href="#about" class="menu-link">About</a></li>
-            <li><a href="#experience" class="menu-link">Experience</a></li>
-            <li><a href="#projects" class="menu-link">Projects</a></li>           
-            <li><a href="#skills" class="menu-link">Skills</a></li>
-             <li><a href="#education" class="menu-link">Education</a></li>
-             <li><a href="#contact" class="menu-link">Contact</a></li>
+            <li class="left-column-item"><a href="#about" class="menu-link">About</a></li>
+            <li class="left-column-item"><a href="#experience" class="menu-link">Experience</a></li>
+            <li class="left-column-item"><a href="#projects" class="menu-link">Projects</a></li>           
+            <li class="left-column-item"><a href="#skills" class="menu-link">Skills</a></li>
+             <li class="left-column-item"><a href="#education" class="menu-link">Education</a></li>
+             <li class="left-column-item"><a href="#contact" class="menu-link">Contact</a></li>
           </ul>
+          <br>
           <ul class="social-icons">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-github"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.facebook.com/nikesh.singh.1466/" target="_blank"><span class="fab fa-facebook-f"></span></a></li>
+            <li><a href="https://github.com/singhnikesh" target="_blank"><span class="fab fa-github"></span></a></li>
+            <li><a href="https://www.linkedin.com/in/nikesh-sharma/" target="_blank"><span class="fab fa-linkedin-in"></span></a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-6 offset-sm-6 right-column">
         <div class="">
           <div id="about" class="section">
-           
+         
             <p>I am experienced and results-driven Senior Software Developer with a strong background in
                <span class="t">.NET, Angular, React, Sql, Azure</span>
                and a wide range of cutting-edge technologies. With a passion for crafting robust and scalable solutions, I bring over <span class="t">8.9+ years</span> of hands-on experience in designing, developing, and delivering high-quality software applications.
